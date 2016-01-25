@@ -3,7 +3,7 @@ A small Angular.js aplication which uses the Marvel Comics API to search for cha
 
 DIRECTIONS:
 
-After cloning the repository, simply open the "index.html" file in a web browser. I did my development using Google Chrome and the Chrome Developer Tools. I have also tested the application in Firefox.
+After cloning the repository or downloading and extracting the .zip file, simply open the "index.html" file in a web browser. I did my development using Google Chrome and the Chrome Developer Tools. I have also tested the application in Firefox and IE 11. In IE 11, the "Maximum Numer of Results" input field will allow the user to enter alphabetic characters, however it seems that the field is ignored on submission if alphabetic characters are present.
 
 NOTE: There are some bugs with the API I have come across in my development and testing of the application. These errors return the same results when I use the Interactive Docs (https://developer.marvel.com/docs) which leads me to believe they are issues with the API and not with my application.
 
