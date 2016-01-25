@@ -1,0 +1,64 @@
+/******************************************************/
+/*	Author	: Nick Angelo
+/*	Date	: 24 January 2016
+/*	Title	: app.css
+/*	Desc	: the main CSS file for our app
+/*
+/******************************************************/
+
+/* minor adjustment for the title above the search bar */
+#searchTitle {
+	margin-top:	1em;
+}
+
+/* styling for the Advanced Options area */
+.advancedOptions {
+	background-color: white;
+    	border-radius: 0.3em;
+}
+
+.advInput {
+	padding: 1em 0.5em 1em 0.5em;
+}
+
+.advInputLast {
+	margin-top: -2em;
+}
+
+.advSortRadio {
+	display: inline-block;
+	padding-left: 0.2em;
+}
+
+/* styling classes for our result list items */
+.resultHeader {
+	display: inline-block;
+}
+
+.resultListItem {
+	min-height: 150px;
+}
+
+.resultImg {
+	float: left;
+	padding: 0.5em;
+	/* we are always grabbing the medium thumbnail, which is 114 px */
+}
+
+.resultName {
+	display: flex;
+	font-size: 2.5em;
+	font-weight: bold;
+}
+
+.resultDescription {
+	display: inline-block;
+	padding-top: 0.2em;
+}
+
+.resultURL {
+	position: relative;
+	padding-right: 2em;
+}
+
+

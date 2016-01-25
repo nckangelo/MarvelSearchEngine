@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html ng-app="marvelApp" lang="en">
+  <head>
+  	<meta charset="utf-8">
+  	<!-- meta tag for bootstrap IE compatability modes -->
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<title>Marvel Superhero Database</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+    <script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-md5.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+  </head>
+  <body>
+  	<nav class="navbar navbar-inverse navbar-fixed-top">
+  		<div class="container">
+  			<div class="navbar-header">
+    			<div class="navbar-brand">
+    				Marvel Super Heroes
+    			</div>
+    		</div>
+    	</div>
+    </nav>
+
+    <div ng-controller="SearchController as searchCtrl" >
+	    <div class="jumbotron">
+	    	<div class="container">
+	    		<p id="searchTitle">
+	    			Enter a character's name below to begin your search
+	    		</p>
+	    		<form ng-submit="searchCtrl.getCharacter()">
+	    			<div class="input-group">
+		    			<input ng-model="searchText"  type="text" class="form-control" placeholder="Search for...">
+		    			<span class="input-group-btn">
+		    				<button class="btn btn-default">Search</button>
+		    			</span>
+	    			</div>
+	    			<div class="checkbox">
+	    				<label><input type="checkbox" value="" ng-model="advancedOptions" ng-change="searchCtrl.toggleAdvOptions()">Advanced Options</label>
+	    			</div>
+				<div class="container advancedOptions" ng-show="advancedOptions">
+
+					<div class="advInput">
+						<label for="input-advSort">Sort By:</label>
+						<div id="input-advSort" class="form-group">
+							<div class="radio advSortRadio">
+								<label>
+									<input type="radio" name="advSortBy" ng-model="advSort" ng-value="'name'">
+									Name (A-Z)
+								</label>
+							</div>
+							<div class="radio advSortRadio">
+								<label>
+									<input type="radio" name="advSortBy" ng-model="advSort" ng-value="'-name'">
+									Name (Z-A)
+								</label>
+							</div>
+							<div class="radio advSortRadio">
+								<label>
+									<input type="radio" name="advSortBy" ng-model="advSort" ng-value="'-modified'">
+									Date Modified (Newest First)
+								</label>
+							</div>
+							<div class="radio advSortRadio">
+								<label>
+									<input type="radio" name="advSortBy" ng-model="advSort" ng-value="'modified'">
+									Date Modified (Oldest First)
+								</label>
+							</div>
+						</div> <!-- END input-advSort -->
+					</div>	<!-- END div.advInput -->
+
+					<div class="advInput advInputLast">
+						<label for="input-advLimit">Maximum Number of Results</label>
+						<input type="number" max=100 class="form-control" id="input-advLimit" ng-model="advLimit" placeholder="Number of Results"></input>
+					</div>
+				</div>	<!-- END div.advancedOptions container -->
+	    		</form>	<!-- END searchCtrl form -->
+		</div>
+	</div>
+
+	    <div class="container">
+	    	<h3>{{resultsText}}</h3>
+	    	<ul class="list-group">
+			<!-- this could (and probably should) be a custom directive... in the interest of time, I'm just keeping it as is (the app isn't that complex) -->
+	    		<li class="list-group-item resultListItem" ng-repeat="result in resultsArray track by $index">
+				<div class="resultHeader">
+			    		<img 	class = "resultImg"	 ng-src={{result.image}} />
+			    		<p 	class="resultName">{{result.name}}</p>
+				</div>
+				<div >
+					<a 	class="resultURL"	 ng-show="result.detailURL" 	ng-href="{{result.detailURL}}">More Info...</a>
+					<a 	class="resultURL"	 ng-show="result.wikiURL" 	ng-href="{{result.wikiURL}}">Wiki</a>
+					<a 	class="resultURL"	 ng-show="result.comicURL" 	ng-href="{{result.comicURL}}">Comics</a>
+				</div>
+	    			<div 	class="resultDescription"ng-bind-html="result.description"></div>		
+	    		</li>
+	    	</ul>
+		<p>{{marvelAttribution}}</p>
+	    </div>
+    </div>
+
+  </body>
+
+</html>
